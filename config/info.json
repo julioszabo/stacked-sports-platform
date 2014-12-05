@@ -2,5 +2,6 @@
 	"port": 3030,
 	"apiPath": "restapi",
 	"dateFormat": "mm/dd/yyyy",
-	"decimalPlaces": 2
+	"decimalPlaces": 2,
+	"timeProcess": 300000
 }

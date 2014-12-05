@@ -91,6 +91,34 @@ var get_route = function(route_path, coll, populates){
   		});
 	});
 
+
+	//FILTER
+	router.route('/' + route_path + "/filter")
+	.post(function(req, res) {
+
+		//TODO: validate json sent
+
+		//create filter
+		if(populates)
+		{
+	  		coll.find(req.body, function(err, result) {
+	    		if (err) {
+	      			return res.send(err);
+	    		}
+	    		res.json(result);
+			}).populate(populates);
+		} else {
+	  		coll.find(req.body, function(err, result) {
+	    		if (err) {
+	      			return res.send(err);
+	    		}
+	    		res.json(result);
+			});
+		}
+
+	});
+
+
 	return router;
 }; 
 

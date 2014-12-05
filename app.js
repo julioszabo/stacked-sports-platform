@@ -73,7 +73,7 @@ app.listen(app.get('port'), function() {
 setInterval(function(){ 
   console.log('Social Sync Start at:' + utils.getDateTime());
   //
-}, 300000);
+}, infoConfig.timeProcess);
 /*********************************************/
 
 module.exports = app;
