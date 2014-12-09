@@ -9,12 +9,22 @@ var get_route = function(route_path, coll, populates){
 	router.route('/' + route_path)
 
 	.get(function(req, res) {
-  		coll.find(function(err, result) {
-    		if (err) {
-      			return res.send(err);
-    		}
-    		res.json(result);
-		});
+		if(populates){
+	  		coll.find(function(err, result) {
+	    		if (err) {
+	      			return res.send(err);
+	    		}
+	    		res.json(result);
+			}).populate(populates);
+		} else {
+	  		coll.find(function(err, result) {
+	    		if (err) {
+	      			return res.send(err);
+	    		}
+	    		res.json(result);
+			});
+		}
+
 	})
 
 
