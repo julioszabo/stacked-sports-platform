@@ -6,7 +6,7 @@ var policySchema = new mongoose.Schema({
 	isActive: Boolean,
 	createdAt: Date,
 	group: { type : mongoose.Schema.ObjectId, ref : 'Group' },
-	coach: { type : mongoose.Schema.ObjectId, ref : 'User' },
+	admin: { type : mongoose.Schema.ObjectId, ref : 'User' },
 	gender: { type : mongoose.Schema.ObjectId, ref : 'Gender' }
 });
 

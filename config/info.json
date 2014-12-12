@@ -3,5 +3,22 @@
 	"apiPath": "restapi",
 	"dateFormat": "mm/dd/yyyy",
 	"decimalPlaces": 2,
-	"timeProcess": 300000
+	"timeProcess": 30000,
+	"instagram": {
+		"media_recent": {
+			"instagramUserId": "user.id",
+			"displayUserName": "user.full_name",
+			"postId" : "id",
+			"postTextContent": "caption.text",
+			"postDateTime": "created_time",
+			"mediaContentType": "type",
+			"mediaContentImageUrl": "images.standard_resolution.url",
+			"mediaContentImageWidth": "images.standard_resolution.width",
+			"mediaContentImageHeight": "images.standard_resolution.height",
+			"mediaContentVideoUrl": "videos.standard_resolution.url",
+			"mediaContentVideoImgUrl": "images.standard_resolution.url",
+			"mediaContentVideoHeight": "videos.standard_resolution.height",
+			"mediaContentVideoWidth": "videos.standard_resolution.width"
+		}
+	}
 }

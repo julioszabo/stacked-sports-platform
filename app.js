@@ -11,7 +11,9 @@ var express = require('express'),
 // =============================================================================
 var utils = require('./utils.js'),
 	secrets = require('./config/secrets'),
-	infoConfig = require("./config/info.json");
+	db = require('./db.js'),
+	infoConfig = require("./config/info.json"),
+	socialIntegracion = require("./social_integration/process.js");
 
 // Create Express server.
 // =============================================================================
@@ -28,25 +30,13 @@ var keywords = require('./api_routes/keywords');
 	policiesEmails = require('./api_routes/policiesEmails'),
 	users = require('./api_routes/users');
 
-// Connect to MongoDB.
-// =============================================================================
-mongoose.connect(secrets.db);
-mongoose.connection.on('error', function() {
-  console.error('MongoDB Connection Error. Please make sure that MongoDB is running.');
-});
-
 // Express configuration.
 // =============================================================================
 app.set('port', infoConfig.port);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride());
-app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: secrets.sessionSecret,
-  store: new MongoStore({ url: secrets.db, auto_reconnect: true })
-}));
+app.use(db.getSession());
 
 
 // ROUTES FOR REST API
@@ -72,7 +62,7 @@ app.listen(app.get('port'), function() {
 /*********************************************/
 setInterval(function(){ 
   console.log('Social Sync Start at:' + utils.getDateTime());
-  //
+  //socialIntegracion.process();
 }, infoConfig.timeProcess);
 /*********************************************/
 
