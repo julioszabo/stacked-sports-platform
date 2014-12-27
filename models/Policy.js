@@ -8,8 +8,10 @@ var policySchema = new mongoose.Schema({
 		group: { type : mongoose.Schema.ObjectId, ref : 'Group' },
 		coach: { type : mongoose.Schema.ObjectId, ref : 'User' },
 		gender: { type : mongoose.Schema.ObjectId, ref : 'Gender' },
-		keywords: [{ type : mongoose.Schema.ObjectId, ref : 'Keyword' }],
-		members: [{ type : mongoose.Schema.ObjectId, ref : 'PolicyEmail' }]
+		keywords: [],
+		members: [],
+		confirmedMembers: [{ type : mongoose.Schema.ObjectId, ref : 'User' }]
+		//keywords: [{ type : mongoose.Schema.ObjectId, ref : 'Keyword' }]
 });
 
 module.exports = mongoose.model('Policy', policySchema);

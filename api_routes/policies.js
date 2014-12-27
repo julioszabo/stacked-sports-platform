@@ -4,5 +4,5 @@ var Policy = require('../models/Policy'),
 
 
 
-module.exports = routes("policies", Policy, "group coach gender members keywords");
+module.exports = routes("policies", Policy, "group coach gender confirmedMembers");
 
