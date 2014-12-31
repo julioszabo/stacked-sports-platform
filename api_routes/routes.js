@@ -29,6 +29,7 @@ var get_route = function(route_path, coll, populates){
 
 
 	//CREATE
+	//Return the entire created item
 	.post(function(req, res) {
 			var item = new coll(req.body);
 
@@ -70,6 +71,7 @@ var get_route = function(route_path, coll, populates){
 	})
 
 	// UPDATE ONE
+	//Return the ID of the modified item.
 	.put(function(req,res){
 			coll.findOne({ _id: req.params.id }, function(err, item) {
 				if (err) {
@@ -103,7 +105,8 @@ var get_route = function(route_path, coll, populates){
 						return res.send(err);
 				}
 
-				res.json({ message: 'Successfully deleted' });
+				res.json({
+					message: 'Successfully deleted'});
 			});
 	});
 
